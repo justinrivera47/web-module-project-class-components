@@ -26,6 +26,10 @@ export default class App extends React.Component {
     })
   }
 
+  handleAdd = (todo) => {
+    
+  }
+
 
   render() {
     return (
