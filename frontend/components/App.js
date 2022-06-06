@@ -1,4 +1,6 @@
 import React from 'react'
+import Form from './Form'
+import TodoList from './TodoList'
 
 export default class App extends React.Component {
   state = {
@@ -11,28 +13,25 @@ export default class App extends React.Component {
       {
         name: 'Bake Cookies',
         id: 1528817084358,
-        completed: false
+        completed: true
       }
-    ]
+    ],
+    input: '' 
+  }
+
+  handleChange = (e) => {
+    console.log(e.target.value)
+    this.setState({
+      input: e.target.value
+    })
   }
 
 
   render() {
     return (
       <div>
-        <ul>
-          {
-            this.state.todo.map(todo => {
-              return <li key={todo.id}>{todo.name}<span>{todo.completed}</span></li>
-              }
-            )
-          }
-        </ul>
-        <form>
-          <input />
-          <button>Submit</button>
-        </form>
-        <button>Clear Button</button>
+        <TodoList todo={this.state.todo}/>
+        <Form handleChange={this.handleChange}/>
       </div>
     )
   }
