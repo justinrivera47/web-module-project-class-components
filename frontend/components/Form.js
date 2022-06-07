@@ -10,12 +10,14 @@ export default class Form extends React.Component {
     e.preventDefault()
     this.props.handleAdd(this.state.input)
     this.setState({ 
+      ...this.state,
       input: ''
     })
   }
 
   handleChange = (e) => {
     this.setState({
+      ...this.state,
       input: e.target.value
     })
   }

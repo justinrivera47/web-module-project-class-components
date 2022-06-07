@@ -30,7 +30,19 @@ export default class App extends React.Component {
   }
 
   toggleComplete = (id) => {
-    console.log('clicked')
+    this.setState({
+      ...this.state,
+      todo: this.state.todo.map(todo => {
+        if(todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed
+          }
+        } else {
+          return todo
+        }
+      })
+    })
   }
 
   render() {
