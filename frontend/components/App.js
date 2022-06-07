@@ -15,27 +15,29 @@ export default class App extends React.Component {
         id: 1528817084358,
         completed: true
       }
-    ],
-    input: '' 
-  }
-
-  handleChange = (e) => {
-    console.log(e.target.value)
-    this.setState({
-      input: e.target.value
-    })
+    ]
   }
 
   handleAdd = (todo) => {
-    
+      const newtodo = {
+        name: todo,
+        id: Date.now(),
+        completed: false
+      }
+      this.setState({
+        todo: [...this.state.todo, newtodo]
+      })
   }
 
+  toggleComplete = (id) => {
+    console.log('clicked')
+  }
 
   render() {
     return (
       <div>
-        <TodoList todo={this.state.todo}/>
-        <Form handleChange={this.handleChange}/>
+        <TodoList todo={this.state.todo} toggleComplete={this.toggleComplete}/>
+        <Form handleChange={this.handleChange} handleAdd={this.handleAdd}/>
       </div>
     )
   }

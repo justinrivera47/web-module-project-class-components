@@ -2,9 +2,22 @@ import React from 'react'
 
 export default class Form extends React.Component {
 
+  state = {
+    input: ''
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log('submit')
+    this.props.handleAdd(this.state.input)
+    this.setState({ 
+      input: ''
+    })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value
+    })
   }
 
   render() {
@@ -12,9 +25,9 @@ export default class Form extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <input 
-          name='input' 
+          value={this.state.input}
           placeholder='add todo'
-          onChange={this.props.handleChange}
+          onChange={this.handleChange}
           />
           <button>Submit</button>
         </form>
